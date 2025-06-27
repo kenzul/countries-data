@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Search from "./components/Search";
 import countriesService from "./services/countries";
+import CountryList from "./components/CountryList";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <div>
       <Search query={query} onChange={handleQueryChange}></Search>
+      {query && countries && <CountryList countries={countries}></CountryList>}
     </div>
   )
 }
