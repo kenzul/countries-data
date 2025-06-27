@@ -4,7 +4,7 @@ const CountryList = ({ countries }) => {
     return (
         <ul>
             {countries.map((country) =>
-                <CountryItem key={country.name.official} name={country.name.common}></CountryItem>)
+                <CountryItem key={country.name.official} country={country}></CountryItem>)
             }
         </ul>
     )
