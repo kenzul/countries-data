@@ -7,6 +7,10 @@ import CountryList from "./components/CountryList";
 const App = () => {
   const [countries, setCountries] = useState(null);
   const [query, setQuery] = useState("");
+  const displayedCountries = countries.filter((country) => {
+    return country.name.common.toLowerCase().includes(query);
+  });
+
 
   useEffect(() => {
     countriesService.getAll().then((data) => {
@@ -14,14 +18,17 @@ const App = () => {
     });
   }, []);
 
+
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   }
 
+
+
   return (
     <div>
       <Search query={query} onChange={handleQueryChange}></Search>
-      {query && countries && <CountryList countries={countries}></CountryList>}
+      {query && countries && <CountryList countries={displayedCountries}></CountryList>}
     </div>
   )
 }
