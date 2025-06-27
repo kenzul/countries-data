@@ -6,7 +6,6 @@ const CountryWeather = ({ capital, lat, lon }) => {
 
     useEffect(() => {
         weatherService.getWeather(lat, lon).then((response) => {
-            console.log(response);
             setData(response);
         });
     }, [])
@@ -14,7 +13,13 @@ const CountryWeather = ({ capital, lat, lon }) => {
     return (
         <div>
             {!data ? <p>Fetching data...</p> :
-                <h2>Weather in {capital}</h2>
+                <>
+                    <h2>Weather in {capital}</h2>
+                    <p>Temperature {data.main.temp} celsius</p>
+                    <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                        alt={data.weather.description}></img>
+                    <p>Wind {data.wind.speed} m/s</p>
+                </>
             }
         </div>
     )
