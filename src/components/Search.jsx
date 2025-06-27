@@ -6,7 +6,6 @@ const Search = ({ query, onChange }) => {
             <input type="text" value={query} onChange={onChange} name="query" id="query"></input>
         </p>
     )
-
 }
 
 export default Search;
