@@ -1,5 +1,7 @@
+import CountryWeather from "./CountryWeather";
 
 const CountryView = ({ country }) => {
+    const [lat, lon] = country.capitalInfo.latlng;
     return (
         <div>
             <h1>{country.name.common}</h1>
@@ -12,6 +14,7 @@ const CountryView = ({ country }) => {
                 }
             </ul>
             <img src={country.flags.png} alt={`${country.name.common}'s flag`}></img>
+            <CountryWeather capital={country.capital} lat={lat} lon={lon}></CountryWeather>
         </div>
     )
 }
